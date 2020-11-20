@@ -34,10 +34,6 @@
  * @return {number[]}
  */
 var twoSum = function(nums, target) {
-  // initialize curr num variable to compare to ea. elem in arr
-  // iterate through original array
-  // if curr elem plus curr num var equals target
-  // return index of curr num var and curr elem
 
   for (let i = 0; i < nums.length; i += 1) {
     for (let k = 1; k < nums.length; k += 1) {
