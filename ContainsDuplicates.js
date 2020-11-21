@@ -19,14 +19,26 @@
  * @param {number[]} nums
  * @return {boolean}
  */
-var containsDuplicate = function(nums) {
-  // create number tracker to track num times each number appears in array
-  // iterate over number tracker obj
-  // if any number appears more than once
-  // return true
-  // else
-  // return false 
-  
-    let numTracker = {};
 
+var containsDuplicate = function(nums) {
+  
+  let numTracker = {};
+  let container = [];
+  
+  for (let i = 0; i < nums.length; i += 1) {
+    if (numTracker[nums[i]] === undefined) {
+      numTracker[nums[i]] = 1;
+    } else {
+      numTracker[nums[i]] += 1;
+    }
+  }
+  for (let nums in numTracker) {
+    if (numTracker[nums] > 1) {
+      container.push(nums);
+    } 
+  }
+  if (container.length > 0) {
+    return true;
+  } 
+  return false;
 };
