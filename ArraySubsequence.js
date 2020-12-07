@@ -16,6 +16,19 @@
 //     true;
 
 function isValidSubsequence(array, sequence) {
-    // Write your code here.
-    
+    let arrayObj = {};
+    for (let i = 0; i < array.length; i+= 1) {
+        if (arrayObj[array[i]] === undefined) {
+          arrayObj[array[i]] = array[i];
+        }
+    }
+    for (let k = 0; k < sequence.length; k+= 1) {
+      console.log(sequence[k]);
+      if (arrayObj[sequence[k]] === undefined) {
+        return false;
+      }
+    }
+    // elem in subseq must be in same order 
+    // as they appear in orig array
+    return true;
   } 
