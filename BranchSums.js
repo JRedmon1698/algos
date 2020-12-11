@@ -16,6 +16,20 @@ class BinaryTree {
 }
 
 function branchSums(root) {
-  // Write your code here.
-}
+	const sumsArray = [];
 
+	const branchSum = (node, sum, sumsArray) => {
+		if (node === null) {
+			return sumsArray;
+		}
+		let runningSum = sum + node.value;
+		if (node.left === null && node.right === null) {
+			sumsArray.push(runningSum);
+			return;
+		}
+		branchSum(node.left, runningSum, sumsArray);
+		branchSum(node.right, runningSum, sumsArray);
+	};
+	branchSum(root, 0, sumsArray);	
+	return sumsArray;
+}
