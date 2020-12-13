@@ -15,24 +15,34 @@ class BinaryTree {
   }
 }
 
-function nodeDepths(root) {
-    let totalSum = 0;
 
-    const traverse = (node, sum) => {
-        let runningSum = totalSum + runningSum;
+// could not get this soln to work
 
-        if (!node.left && !node.right) {
-            return runningSum;
-        }
-        if (node.left) {
-            runningSum += 1;
-        }
-        if (node.right) {
-            runningSum += 1;
-        } 
-				traverse(node.left, runningSum);
-				traverse(node.right, runningSum);
-    };
+// function nodeDepths(root) {
+//     let totalSum = 0;
 
-    return traverse(root, 0);
-  }
+//     const traverse = (node, sum) => {
+//         let runningSum = totalSum + runningSum;
+
+//         if (!node.left && !node.right) {
+//             return runningSum;
+//         }
+//         if (node.left) {
+//             runningSum += 1;
+//         }
+//         if (node.right) {
+//             runningSum += 1;
+//         } 
+// 				traverse(node.left, runningSum);
+// 				traverse(node.right, runningSum);
+//     };
+
+//     return traverse(root, 0);
+//   }
+
+  function nodeDepths(root, depth = 0) {
+	if (root === null) {
+		return 0;
+	}
+	return depth + nodeDepths(root.left, depth + 1) + nodeDepths(root.right, depth + 1);
+}
