@@ -15,21 +15,24 @@ class BinaryTree {
   }
 }
 
-function branchSums(root) {
-	const sumsArray = [];
+function nodeDepths(root) {
+    let totalSum = 0;
 
-	const branchSum = (node, sum, sumsArray) => {
-		if (node === null) {
-			return sumsArray;
-		}
-		let runningSum = sum + node.value;
-		if (node.left === null && node.right === null) {
-			sumsArray.push(runningSum);
-			return;
-		}
-		branchSum(node.left, runningSum, sumsArray);
-		branchSum(node.right, runningSum, sumsArray);
-	};
-	branchSum(root, 0, sumsArray);	
-	return sumsArray;
-}
+    const traverse = (node, sum) => {
+        let runningSum = totalSum + runningSum;
+
+        if (!node.left && !node.right) {
+            return runningSum;
+        }
+        if (node.left) {
+            runningSum += 1;
+        }
+        if (node.right) {
+            runningSum += 1;
+        } 
+				traverse(node.left, runningSum);
+				traverse(node.right, runningSum);
+    };
+
+    return traverse(root, 0);
+  }
