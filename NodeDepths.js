@@ -3,11 +3,16 @@
 // Write a function that takes in a Binary Tree and returns the sum of its nodes' depths.
 
 function nodeDepths(root) {
-    let depthSum = 0;
 
-    
+    const traverse = (node, runningSum) => {
+        if (!node.left && !node.right) {
+            return runningSum;
+        }
+        
+        return runningSum;
+    };
 
-    return depthSum;
+    return traverse(root, 0);
   }
   
   // This is the class of the input binary tree.
