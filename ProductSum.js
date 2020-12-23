@@ -20,10 +20,10 @@ function productSum(array, depth = 1) {
 
   for (let i = 0; i < array.length; i += 1) {
     if (typeof array[i] === 'number') {
-      sum = (depth * (sum += array[i]));
+      sum += array[i];
     } else if (Array.isArray(array[i])) {
-      productSum(array[i], depth + 1);
+      sum += productSum(array[i], depth + 1);
     }
   }
-  return sum;
+  return sum * depth;
 };
