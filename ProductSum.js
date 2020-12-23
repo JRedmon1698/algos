@@ -10,11 +10,20 @@
 // Therefore, the product sum of [x, y] is x + y. The product sum of [x, [y, z]] is
 // x + 2 * (y + z). The product sum of [x, [y, [z]]] is x + 2 * (y + 3z).
 
-const sampleInput = [5, 2, [7, -1], 3, [, [-13, 8], 4]];
+const sampleInput = [5, 2, [7, -1], 3, [6, [-13, 8], 4]];
 // calculated as: 5 + 2 + 2 * (7 - 1) + 3 + 2 * (6 + 3 * (-13 + 8) + 4) ==> 12
 
 // Tip: You can use the Array.isArray function to check whether an item
 // is a list or an integer.
-function productSum(array) {
-  // Write your code here.
+function productSum(array, depth = 1) {
+  let sum = 0;
+
+  for (let i = 0; i < array.length; i += 1) {
+    if (typeof array[i] === 'number') {
+      sum = (depth * (sum += array[i]));
+    } else if (Array.isArray(array[i])) {
+      productSum(array[i], depth + 1);
+    }
+  }
+  return sum;
 };
