@@ -5,5 +5,15 @@
 // Note: "z" should wrap to "a"
 
 function caesarCipherEncryptor(string, key) {
-  
+  let resultString = '';
+  key = key % 26;
+  for (let i = 0; i < string.length; i += 1) {
+    let uniCode = string.charCodeAt(i);
+    let newUniCode = uniCode + key;
+    if (newUniCode > 122) {
+      newUniCode -= 26;
+    }
+    resultString += String.fromCharCode(newUniCode);
+  }
+  return resultString;
 };
