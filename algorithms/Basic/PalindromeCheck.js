@@ -5,5 +5,8 @@
 // single-character strings are palindromes. 
 
 function isPalindrome(string) {
-
+    if (string.split('').reverse().join('') === string) {
+		return true;
+	}
+	return false;
 };
