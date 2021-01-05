@@ -8,11 +8,24 @@
 // output ==> [[-8, 2, 6], [-8, 3, 5], [-6, 1, 5]]
 
 function threeNumberSum(array, targetSum) {
-    // sort input array smallest to largest 
-    array = array.sort((a, b) => {
-        return a - b;
-        });
-        return array;
-    
-    
+    array.sort((a, b) => a - b);
+    const resultArray = [];
+
+    for (let i = 0; i < array.length - 2; i += 1) {
+        let left = i + 1;
+        let right = array.length - 1;
+        while (left < right) {
+            const currSum = array[i] + array[left] + array[right];
+            if (currSum === targetSum) {
+                resultArray.push([array[i], array[left], array[right]]);
+                left += 1;
+                right -= 1;
+            } else if (currSum < targetSum) {
+                left += 1;
+            } else if (currSum > targetSum) {
+                right -= 1;
+            }
+        }
+    }
+    return resultArray;
 };
