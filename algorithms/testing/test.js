@@ -1,22 +1,18 @@
-function isValidSubsequence(array, sequence) {
-    let arrayObj = {};
-    for (let i = 0; i < array.length; i += 1) {
-        if (arrayObj[array[i]] === undefined) {
-            arrayObj[array[i]] = array[i];
+const containsDuplicates = (arr) => {
+    let numTracker = {};
+    for (let i = 0; i < arr.length; i++) {
+        if (numTracker[arr[i]] === undefined) {
+            numTracker[arr[i]] = 1;
         }
+        numTracker[arr[i]]++;
     }
-    for (let k = 0; k < sequence.length; k += 1) {
-        console.log(sequence[k]);
-        if (arrayObj[sequence[k]] === undefined) {
-            return false;
+    for (let key in numTracker) {
+        if (numTracker[key] > 1) {
+            return true;
         }
+        return false;
     }
-    // elem in subseq must be in same order 
-    // as they appear in orig array
-    return true;
 }
 
-const testArray = [5, 1, 22, 25, 6, -1, 8, 10];
-const testSequennce = [1, 6, -1, 10];
-
-isValidSubsequence(testArray, testSequennce);
+containsDuplicates([1, 2, 3, 2]);
+containsDuplicates([1, 3, 2, 4]);
