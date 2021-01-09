@@ -23,7 +23,6 @@ function isValidSubsequence(array, sequence) {
         }
     }
     for (let k = 0; k < sequence.length; k+= 1) {
-      console.log(sequence[k]);
       if (arrayObj[sequence[k]] === undefined) {
         return false;
       }

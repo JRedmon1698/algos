@@ -20,11 +20,11 @@
  * @return {boolean}
  */
 
-var containsDuplicate = function(nums) {
-  
+var containsDuplicate = function (nums) {
+
   let numTracker = {};
   let container = [];
-  
+
   for (let i = 0; i < nums.length; i += 1) {
     if (numTracker[nums[i]] === undefined) {
       numTracker[nums[i]] = 1;
@@ -35,10 +35,30 @@ var containsDuplicate = function(nums) {
   for (let nums in numTracker) {
     if (numTracker[nums] > 1) {
       container.push(nums);
-    } 
+    }
   }
   if (container.length > 0) {
     return true;
-  } 
+  }
   return false;
+};
+
+
+const containsDuplicates = (nums) => {
+  let numTracker = {};
+
+  for (let i = 0; i < nums.length; i++) {
+    if (numTracker[nums[i]] === undefined) {
+      numTracker[nums[i]] = 1;
+    } else {
+      numTracker[nums[i]]++;
+    }
+  }
+  for (let num in numTracker) {
+    if (numTracker[num] > 1) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 };

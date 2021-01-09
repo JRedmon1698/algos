@@ -10,7 +10,6 @@ const binarySearch = (array, target) => {
       min = mid + 1;
     }
     mid = Math.floor((min + max) / 2);
-    console.log(min, mid, max);
   }
   return mid === target ? array.indexOf(mid) : -1;
 };
