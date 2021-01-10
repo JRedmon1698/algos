@@ -19,7 +19,7 @@ function isMonotonic(array) {
     if (direction === 0) {
       direction = array[i] - array[i - 1];
     }
-    if breaksDirection(direcction, array[i - 1], array[i]) {
+    if (breaksDirection(direcction, array[i - 1], array[i])) {
       return false;
     }
   }
