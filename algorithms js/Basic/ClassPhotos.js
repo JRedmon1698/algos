@@ -24,5 +24,27 @@
 
 
 const classPhotos = (redShirtHeights, blueShirtHeights) => {
-
-};
+    let backRow;
+    
+    let canTakePicture = true;
+    
+    redShirtHeights = redShirtHeights.sort((a, b) => b - a);
+    blueShirtHeights = blueShirtHeights.sort((a, b) => b - a);
+    
+    if (redShirtHeights[0] > blueShirtHeights[0]) {
+        backRow = redShirtHeights;
+    } else {
+        backRow = blueShirtHeights;
+    }
+    
+    for (let i = 0; i < redShirtHeights.length; i++) {
+        redStudent = redShirtHeights[i];
+        blueStudent = blueShirtHeights[i];
+    
+        if (backRow === redShirtHeights) {
+        if (redStudent <= blueStudent) canTakePicture = false;
+        } else if (blueStudent <= redStudent) canTakePicture = false;
+    }
+    
+    return canTakePicture;
+    };
