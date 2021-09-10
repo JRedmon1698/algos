@@ -13,8 +13,36 @@
 //   The document that you need to create may contain any characters, including
 //   special characters, capital letters, numbers, and spaces.
 
-const generateDocument = (charatcters, document) => {
-    if (documnet === '') return true;
+const generateDocument = (characters, document) => {
+    if (document === '') return true;
 
-    
-};
+    characters = characters.split('');
+    document = document.split('');
+
+    let charMap = {};
+    let docMap = {};
+
+    for (let i = 0; i < characters.length; i++) {
+        if (!charMap[characters[i]]) {
+            charMap[characters[i]] = 0;
+        } 
+            charMap[characters[i]] += 1;
+    }
+
+    for (let k = 0; k < document.length; k++) {
+        if (!docMap[document[k]]) {
+            docMap[document[k]] = 0;
+        } 
+            docMap[document[k]] += 1;
+    }
+
+    for (char in docMap) {
+        if (!charMap[char]) {
+            return false;
+        } else if (charMap[char] < docMap[char]) {
+            return false;
+        }
+    }
+
+    return true;
+  };
