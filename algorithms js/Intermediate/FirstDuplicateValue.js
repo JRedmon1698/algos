@@ -12,5 +12,28 @@
 // Note that you are allowed to mutate the input array.
 
 const firstDuplicateValue = (array) => {
+    const valMap = {};
+	
+	if (array.length < 2) {
+        return -1;
+    }
 
+  for (let i = 0; i < array.length; i++) {
+    if (valMap[array[i]] === undefined) {
+      valMap[array[i]] = 0;
+    } else {
+      valMap[array[i]]++;
+    }
+
+    for (val in valMap) {
+      if (valMap[val] > 0) {
+        return parseInt(val);
+      }
+    }
+  }
+	for (val in valMap) {
+    if (valMap[val] < 1) {
+      return -1;
+    }
+  }
 };
